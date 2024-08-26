@@ -127,6 +127,7 @@ procedure InitializeComponent;
         self.toolStripMenuItem18 := new System.Windows.Forms.ToolStripSeparator();
         self.checkForUpdatesToolStripMenuItem := new System.Windows.Forms.ToolStripMenuItem();
         self.aboutToolStripMenuItem := new System.Windows.Forms.ToolStripMenuItem();
+        self.toolStrip1 := new System.Windows.Forms.ToolStrip();
         self.menuStrip1.SuspendLayout();
         self.SuspendLayout();
         // 
@@ -135,7 +136,7 @@ procedure InitializeComponent;
         self.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[9](self.fileToolStripMenuItem, self.editToolStripMenuItem, self.viewToolStripMenuItem, self.projectToolStripMenuItem, self.programToolStripMenuItem, self.designerToolStripMenuItem, self.toolsToolStripMenuItem, self.pluginsToolStripMenuItem, self.helpToolStripMenuItem));
         self.menuStrip1.Location := new System.Drawing.Point(0, 0);
         self.menuStrip1.Name := 'menuStrip1';
-        self.menuStrip1.Size := new System.Drawing.Size(763, 24);
+        self.menuStrip1.Size := new System.Drawing.Size(437, 24);
         self.menuStrip1.TabIndex := 0;
         self.menuStrip1.Text := 'menuStrip1';
         // 
@@ -652,7 +653,7 @@ procedure InitializeComponent;
         // 
         self.alignToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[7](self.leftsToolStripMenuItem, self.rightsToolStripMenuItem, self.topsToolStripMenuItem, self.bottomsToolStripMenuItem, self.horizontalCentersToolStripMenuItem, self.verticalCentersToolStripMenuItem, self.toGridToolStripMenuItem));
         self.alignToolStripMenuItem.Name := 'alignToolStripMenuItem';
-        self.alignToolStripMenuItem.Size := new System.Drawing.Size(152, 22);
+        self.alignToolStripMenuItem.Size := new System.Drawing.Size(127, 22);
         self.alignToolStripMenuItem.Text := 'Align';
         // 
         // leftsToolStripMenuItem
@@ -701,26 +702,26 @@ procedure InitializeComponent;
         // 
         self.centerToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[2](self.horizontallyToolStripMenuItem, self.verticallyToolStripMenuItem));
         self.centerToolStripMenuItem.Name := 'centerToolStripMenuItem';
-        self.centerToolStripMenuItem.Size := new System.Drawing.Size(152, 22);
+        self.centerToolStripMenuItem.Size := new System.Drawing.Size(127, 22);
         self.centerToolStripMenuItem.Text := 'Center';
         // 
         // horizontallyToolStripMenuItem
         // 
         self.horizontallyToolStripMenuItem.Name := 'horizontallyToolStripMenuItem';
-        self.horizontallyToolStripMenuItem.Size := new System.Drawing.Size(152, 22);
+        self.horizontallyToolStripMenuItem.Size := new System.Drawing.Size(139, 22);
         self.horizontallyToolStripMenuItem.Text := 'Horizontally';
         // 
         // verticallyToolStripMenuItem
         // 
         self.verticallyToolStripMenuItem.Name := 'verticallyToolStripMenuItem';
-        self.verticallyToolStripMenuItem.Size := new System.Drawing.Size(152, 22);
+        self.verticallyToolStripMenuItem.Size := new System.Drawing.Size(139, 22);
         self.verticallyToolStripMenuItem.Text := 'Vertically';
         // 
         // sizeToToolStripMenuItem
         // 
         self.sizeToToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[4](self.controlToolStripMenuItem, self.controlWidthToolStripMenuItem, self.controlHeightToolStripMenuItem, self.gridToolStripMenuItem));
         self.sizeToToolStripMenuItem.Name := 'sizeToToolStripMenuItem';
-        self.sizeToToolStripMenuItem.Size := new System.Drawing.Size(152, 22);
+        self.sizeToToolStripMenuItem.Size := new System.Drawing.Size(127, 22);
         self.sizeToToolStripMenuItem.Text := 'Size to';
         // 
         // controlToolStripMenuItem
@@ -751,25 +752,25 @@ procedure InitializeComponent;
         // 
         self.zorderToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[2](self.bringToFrontToolStripMenuItem, self.sendToBackToolStripMenuItem));
         self.zorderToolStripMenuItem.Name := 'zorderToolStripMenuItem';
-        self.zorderToolStripMenuItem.Size := new System.Drawing.Size(152, 22);
+        self.zorderToolStripMenuItem.Size := new System.Drawing.Size(127, 22);
         self.zorderToolStripMenuItem.Text := 'Z-order';
         // 
         // bringToFrontToolStripMenuItem
         // 
         self.bringToFrontToolStripMenuItem.Name := 'bringToFrontToolStripMenuItem';
-        self.bringToFrontToolStripMenuItem.Size := new System.Drawing.Size(152, 22);
+        self.bringToFrontToolStripMenuItem.Size := new System.Drawing.Size(149, 22);
         self.bringToFrontToolStripMenuItem.Text := 'Bring to Front';
         // 
         // sendToBackToolStripMenuItem
         // 
         self.sendToBackToolStripMenuItem.Name := 'sendToBackToolStripMenuItem';
-        self.sendToBackToolStripMenuItem.Size := new System.Drawing.Size(152, 22);
+        self.sendToBackToolStripMenuItem.Size := new System.Drawing.Size(149, 22);
         self.sendToBackToolStripMenuItem.Text := 'Send to Back';
         // 
         // tabOrderToolStripMenuItem
         // 
         self.tabOrderToolStripMenuItem.Name := 'tabOrderToolStripMenuItem';
-        self.tabOrderToolStripMenuItem.Size := new System.Drawing.Size(152, 22);
+        self.tabOrderToolStripMenuItem.Size := new System.Drawing.Size(127, 22);
         self.tabOrderToolStripMenuItem.Text := 'Tab Order';
         // 
         // toolsToolStripMenuItem
@@ -941,14 +942,24 @@ procedure InitializeComponent;
         self.aboutToolStripMenuItem.Size := new System.Drawing.Size(187, 22);
         self.aboutToolStripMenuItem.Text := 'About';
         // 
+        // toolStrip1
+        // 
+        self.toolStrip1.Location := new System.Drawing.Point(0, 24);
+        self.toolStrip1.Name := 'toolStrip1';
+        self.toolStrip1.Size := new System.Drawing.Size(437, 25);
+        self.toolStrip1.TabIndex := 1;
+        self.toolStrip1.Text := 'toolStrip1';
+        // 
         // Form1
         // 
-        self.ClientSize := new System.Drawing.Size(763, 624);
+        self.ClientSize := new System.Drawing.Size(437, 280);
+        self.Controls.Add(self.toolStrip1);
         self.Controls.Add(self.menuStrip1);
         self.MainMenuStrip := self.menuStrip1;
         self.Name := 'Form1';
         self.Text := 'Form1';
         self.Load += Form1_Load;
+        self.SizeChanged += Form1_SizeChanged;
         self.menuStrip1.ResumeLayout(false);
         self.menuStrip1.PerformLayout();
         self.ResumeLayout(false);

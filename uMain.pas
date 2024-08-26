@@ -2,13 +2,20 @@
 
 interface
 
-uses System, System.Drawing, System.Windows.Forms;
+uses System, System.Drawing, System.Windows.Forms,
+     WeifenLuo.WinFormsUI.Docking,
+     fChild;
 
 type
   Form1 = class(Form)
+    formChild1, formChild2, formChild3, formChild4, formChild5, formChild6, formChild7, formChild8: FormChild;
+    dockPanelMain: DockPanel;
+    procedure InitializeMyComponent;
     procedure Form1_Load(sender: Object; e: EventArgs);
     procedure exitToolStripMenuItem_Click(sender: Object; e: EventArgs);
     procedure editToolStripMenuItem_Click(sender: Object; e: EventArgs);
+    procedure TabControl_SelectedIndexChanged(sender: Object; e: EventArgs);
+    procedure Form1_SizeChanged(sender: Object; e: EventArgs);
   {$region FormDesigner}
   internal
     {$resource uMain.Form1.resources}
@@ -138,6 +145,7 @@ type
     toolStripMenuItem18: ToolStripSeparator;
     checkForUpdatesToolStripMenuItem: ToolStripMenuItem;
     aboutToolStripMenuItem: ToolStripMenuItem;
+    toolStrip1: ToolStrip;
     toolStripMenuItem2: ToolStripSeparator;
     {$include uMain.Form1.inc}
   {$endregion FormDesigner}
@@ -145,15 +153,171 @@ type
     constructor;
     begin
       InitializeComponent;
+      InitializeMyComponent;
     end;
   end;
 
 implementation
 
-procedure Form1.Form1_Load(sender: Object; e: EventArgs);
+
+procedure Form1.InitializeMyComponent;
 begin
-  self.Text := 'PascalABC.NET 3.9';  // 현재 폼의 Text 속성 설정
+  formChild1 := new FormChild;
+  formChild2 := new FormChild;
+  formChild3 := new FormChild;
+  formChild4 := new FormChild;
+  formChild5 := new FormChild;
+  formChild6 := new FormChild;
+  formChild7 := new FormChild;
+  formChild8 := new FormChild;
+  
+      // FormMain 컴포넌트 초기화 코드 작성
+      dockPanelMain := new DockPanel;
+      //dockPanelMain.Dock := DockStyle.Fill;
+      dockPanelMain.Dock := DockStyle.Bottom;
+      
+      dockPanelMain.Height := self.ClientSize.Height - menuStrip1.Height - toolStrip1.Height;
+
+      //dockPanelMain.Theme := new VS2015DarkTheme;
+      dockPanelMain.Theme := new VS2005Theme; // 탭 모양은 이테마가 제일 좋음.
+      //menuStrip1.Dock := DockStyle.Top;
+     //self.Controls.Add(menuStrip1);
+     //menuStrip1.Visible := false;
+     
+     self.Controls.Add(dockPanelMain);
+ 
+      // FormMain의 이벤트 핸들러 설정
+      //self.Load += new EventHandler(FormMain_Load);  
 end;
+
+procedure Form1.Form1_Load(sender: Object; e: EventArgs);
+var
+  tabControl: TabControl;
+  tabPage1, tabPage2: TabPage;
+begin
+  self.Text := 'PascalABC.NET 3.9_imitate';  // 현재 폼의 Text 속성 설정
+
+  formChild1.Text := 'Project Explorer';
+  formChild2.Text := 'Toolbox';
+  formChild3.Text := 'FormChild 3';
+  formChild4.Text := 'FormChild 4';
+  formChild5.Text := 'Output Window';
+  formChild6.Text := 'Error List';
+  formChild7.Text := 'Compiler Messages';
+  formChild8.Text := 'Properties';
+  
+  formChild1.Show(dockPanelMain, DockState.DockLeft);
+  formChild2.Show(dockPanelMain, DockState.DockLeft);
+  formChild3.Show(dockPanelMain);
+  formChild4.Show(dockPanelMain);
+  formChild5.Show(dockPanelMain, DockState.DockBottom);
+  formChild6.Show(dockPanelMain, DockState.DockBottom);
+  formChild7.Show(dockPanelMain, DockState.DockBottom);
+  formChild8.Show(dockPanelMain, DockState.DockRight);
+
+
+   //footerDockPanel.DockBottomPortion = 0.99;
+   //formChild1.DockPanel.AllowEndUserNestedDocking :=true;
+  //formChild1.SetBounds(0, menuStrip1.Height, self.ClientSize.Width , self.ClientSize.Height - menuStrip1.Height);
+  
+
+  formChild2.DockPanel.DockLeftPortion := 0.30;
+  formChild2.DockTo(formChild1.Pane, DockStyle.Bottom, 0);  
+  
+  
+  // formChild4에 TabControl 추가
+  tabControl := new System.Windows.Forms.TabControl();
+  tabControl.Dock := DockStyle.Fill;  
+  // 탭 페이지 추가
+  tabPage1 := new TabPage('Designer');
+  tabPage2 := new TabPage('Code');
+  
+  tabControl.TabPages.Add(tabPage1);
+  tabControl.TabPages.Add(tabPage2);
+  
+  // tabPage2를 클릭된 상태로 설정
+  tabControl.SelectedTab := tabPage2;
+  
+  // TabControl의 SelectedIndexChanged 이벤트 핸들러 추가
+  tabControl.SelectedIndexChanged += TabControl_SelectedIndexChanged;
+  
+  
+  // formChild4에 TabControl 추가
+  formChild4.Controls.Add(tabControl);  
+  
+  
+  
+      formChild1.ShowForm;
+      formChild2.HideForm;
+      formChild3.ShowForm;
+      formChild4.ShowForm;
+      formChild5.ShowForm;
+      formChild6.ShowForm;
+      formChild7.ShowForm;
+      formChild8.HideForm;
+    
+
+end;
+
+// TabControl 탭 클릭 이벤트 핸들러
+procedure Form1.TabControl_SelectedIndexChanged(sender: Object; e: EventArgs);
+begin
+  var tabControl := TabControl(sender);
+  //MessageBox.Show('Selected Tab: ' + tabControl.SelectedTab.Text);
+  var selectedTabText := tabControl.SelectedTab.Text;
+  
+  // 탭 이름에 따른 조건 분기 (C#의 switch와 유사한 case 문)
+  case selectedTabText of
+    'Designer': 
+    begin
+      //MessageBox.Show('Tab 1 is selected');
+      // Tab 1에 해당하는 작업 수행
+      formChild1.ShowForm;
+      formChild2.ShowForm;
+      formChild3.ShowForm;
+      formChild4.ShowForm;
+      formChild5.HideForm;
+      formChild6.HideForm;
+      formChild7.HideForm;
+      formChild8.ShowForm;
+     
+      {
+  formChild1.Text := 'Project Explorer';
+  formChild2.Text := 'Toolbox';
+  formChild3.Text := 'FormChild 3';
+  formChild4.Text := 'FormChild 4';
+  formChild5.Text := 'Output Window';
+  formChild6.Text := 'Error List';
+  formChild7.Text := 'Compiler Messages';
+  formChild8.Text := 'Properties';      
+  }
+         
+      
+    end;
+    
+    'Code': 
+    begin
+      //MessageBox.Show('Tab 2 is selected');
+      // Tab 2에 해당하는 작업 수행
+      formChild1.ShowForm;
+      formChild2.HideForm;
+      formChild3.ShowForm;
+      formChild4.ShowForm;
+      formChild5.ShowForm;
+      formChild6.ShowForm;
+      formChild7.ShowForm;
+      formChild8.HideForm;
+      
+    end;
+    
+    else
+    begin
+      MessageBox.Show('Unknown Tab is selected');
+      // 기타 작업 수행
+    end;
+  end;  
+end;
+
 
 procedure Form1.exitToolStripMenuItem_Click(sender: Object; e: EventArgs);
 begin
@@ -164,6 +328,11 @@ end;
 procedure Form1.editToolStripMenuItem_Click(sender: Object; e: EventArgs);
 begin
   
+end;
+
+procedure Form1.Form1_SizeChanged(sender: Object; e: EventArgs);
+begin
+  dockPanelMain.Height := self.ClientSize.Height - menuStrip1.Height - toolStrip1.Height;
 end;
 
 end.
