@@ -136,7 +136,7 @@ procedure InitializeComponent;
         self.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[9](self.fileToolStripMenuItem, self.editToolStripMenuItem, self.viewToolStripMenuItem, self.projectToolStripMenuItem, self.programToolStripMenuItem, self.designerToolStripMenuItem, self.toolsToolStripMenuItem, self.pluginsToolStripMenuItem, self.helpToolStripMenuItem));
         self.menuStrip1.Location := new System.Drawing.Point(0, 0);
         self.menuStrip1.Name := 'menuStrip1';
-        self.menuStrip1.Size := new System.Drawing.Size(437, 24);
+        self.menuStrip1.Size := new System.Drawing.Size(593, 24);
         self.menuStrip1.TabIndex := 0;
         self.menuStrip1.Text := 'menuStrip1';
         // 
@@ -941,18 +941,19 @@ procedure InitializeComponent;
         self.aboutToolStripMenuItem.Name := 'aboutToolStripMenuItem';
         self.aboutToolStripMenuItem.Size := new System.Drawing.Size(187, 22);
         self.aboutToolStripMenuItem.Text := 'About';
+        self.aboutToolStripMenuItem.Click += aboutToolStripMenuItem_Click;
         // 
         // toolStrip1
         // 
         self.toolStrip1.Location := new System.Drawing.Point(0, 24);
         self.toolStrip1.Name := 'toolStrip1';
-        self.toolStrip1.Size := new System.Drawing.Size(437, 25);
+        self.toolStrip1.Size := new System.Drawing.Size(593, 25);
         self.toolStrip1.TabIndex := 1;
         self.toolStrip1.Text := 'toolStrip1';
         // 
         // Form1
         // 
-        self.ClientSize := new System.Drawing.Size(437, 280);
+        self.ClientSize := new System.Drawing.Size(593, 461);
         self.Controls.Add(self.toolStrip1);
         self.Controls.Add(self.menuStrip1);
         self.MainMenuStrip := self.menuStrip1;

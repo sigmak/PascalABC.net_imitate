@@ -4,7 +4,7 @@ interface
 
 uses System, System.Drawing, System.Windows.Forms,
      WeifenLuo.WinFormsUI.Docking,
-     fChild;
+     fChild, uAboutBox;
 
 type
   Form1 = class(Form)
@@ -16,6 +16,7 @@ type
     procedure editToolStripMenuItem_Click(sender: Object; e: EventArgs);
     procedure TabControl_SelectedIndexChanged(sender: Object; e: EventArgs);
     procedure Form1_SizeChanged(sender: Object; e: EventArgs);
+    procedure aboutToolStripMenuItem_Click(sender: Object; e: EventArgs);
   {$region FormDesigner}
   internal
     {$resource uMain.Form1.resources}
@@ -333,6 +334,25 @@ end;
 procedure Form1.Form1_SizeChanged(sender: Object; e: EventArgs);
 begin
   dockPanelMain.Height := self.ClientSize.Height - menuStrip1.Height - toolStrip1.Height;
+end;
+
+procedure Form1.aboutToolStripMenuItem_Click(sender: Object; e: EventArgs);
+var 
+  formAbout: TAboutBox;
+begin
+  //About 메뉴
+  
+  {// 이거는 델파이 코드임.
+  formAbout := About.Create(Applicaton); 
+  formAbout.ShowModal; 
+  }
+  formAbout := new TAboutBox;   // PascalABC.NET에서 new를 사용하여 폼 생성
+  formAbout.StartPosition := FormStartPosition.CenterParent; //모달폼 호출전에 사용해야됨.
+  formAbout.ShowDialog;          // ShowDialog는 모달로 폼을 띄움
+  
+  
+  //ChildForm.StartPosition := FormStartPosition.CenterParent;  // 부모 폼 중앙에 위치
+  //ChildForm.ShowDialog(MainForm);  // 부모 폼을 지정하여 모달 창으로 열기
 end;
 
 end.
