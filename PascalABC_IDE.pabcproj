@@ -5,6 +5,7 @@
     <Item Type="SourceFile" Name="uMain.pas" Path="uMain.pas" />
     <Item Type="SourceFile" Name="fChild.pas" Path="fChild.pas" />
     <Item Type="SourceFile" Name="uAboutBox.pas" Path="uAboutBox.pas" />
+    <Item Type="SourceFile" Name="uTest.pas" Path="uTest.pas" />
     <Item Type="Reference" AssemblyName="System" FullAssemblyName="System.dll" />
     <Item Type="Reference" AssemblyName="System.Windows.Forms" FullAssemblyName="System.Windows.Forms.dll" />
     <Item Type="Reference" AssemblyName="System.Drawing" FullAssemblyName="System.Drawing.dll" />
