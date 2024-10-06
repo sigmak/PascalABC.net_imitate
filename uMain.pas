@@ -5,7 +5,7 @@ interface
 uses System, System.Drawing, System.Windows.Forms,
      WeifenLuo.WinFormsUI.Docking,
      fChild, uAboutBox, 
-     uVisualStates, uRunProcessOptions, uFSWatcherService;
+     uVisualStates, uRunProcessOptions, uFSWatcherService, uFileMonitoring;
 
 type
   Form1 = class(Form)
@@ -164,7 +164,7 @@ var
   visualStates: VisualStates := new VisualStates(); // uVisualStates.pas 테스트용 코드임. 2024.10.06
   runProcessOptions : RunProcessOptions := new RunProcessOptions();// uRunProcessOptions.pas 테스트용 코드임. 2024.10.06
   fSWatcherService : FSWatcherService := new FSWatcherService(); // uFSWatcherService.pas 테스트용 코드임. 2024.10.06
-  
+  fileChangeWatcher : FileChangeWatcher := new FileChangeWatcher(''); // uFileMonitoring.pas 테스트용 코드임. 2024.10.06
 procedure Form1.InitializeMyComponent;
 begin
   formChild1 := new FormChild;
