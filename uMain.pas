@@ -4,7 +4,7 @@ interface
 
 uses System, System.Drawing, System.Windows.Forms,
      WeifenLuo.WinFormsUI.Docking,
-     fChild, uAboutBox;
+     fChild, uAboutBox, uVisualStates;
 
 type
   Form1 = class(Form)
@@ -159,7 +159,8 @@ type
   end;
 
 implementation
-
+var
+  visualStates: VisualStates := new VisualStates(); // uVisualStates.pas 테스트용 코드임. 2024.10.06
 
 procedure Form1.InitializeMyComponent;
 begin
