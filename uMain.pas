@@ -4,7 +4,8 @@ interface
 
 uses System, System.Drawing, System.Windows.Forms,
      WeifenLuo.WinFormsUI.Docking,
-     fChild, uAboutBox, uVisualStates;
+     fChild, uAboutBox, 
+     uVisualStates, uRunProcessOptions;
 
 type
   Form1 = class(Form)
@@ -161,6 +162,7 @@ type
 implementation
 var
   visualStates: VisualStates := new VisualStates(); // uVisualStates.pas 테스트용 코드임. 2024.10.06
+  runProcessOptions : RunProcessOptions := new RunProcessOptions();// uRunProcessOptions.pas 테스트용 코드임. 2024.10.06
 
 procedure Form1.InitializeMyComponent;
 begin
