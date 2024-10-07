@@ -18,7 +18,11 @@ type
   generate_pcu_read_visitor : Button;
   panel1 : Panel;
   panel2 : Panel;
-  
+
+  panel3 : Panel;
+  nodes_list : ListBox;
+  add : Button;
+  delete : Button;
   
     procedure open_Click(sender: Object; e: EventArgs);
     procedure save_as_Click(sender: Object; e: EventArgs);
@@ -29,6 +33,10 @@ type
     procedure generate_cpp_code_Click(sender: Object; e: EventArgs);
     procedure button1_Click_1(sender: Object; e: EventArgs);
     procedure generate_pcu_read_visitor_Click(sender: Object; e: EventArgs);
+
+    procedure nodes_list_DoubleClick(sender: Object; e: EventArgs);
+    procedure add_Click(sender: Object; e: EventArgs);
+    procedure delete_Click(sender: Object; e: EventArgs);
     
     procedure Form1_Load(sender: Object; e: EventArgs);
 
@@ -61,6 +69,11 @@ type
         button1 := new Button();
         generate_pcu_read_visitor := new Button();
 
+        panel3 := new Panel();
+        nodes_list := new ListBox();
+        add := new Button();
+        delete := new Button();
+        
         // 
         // open
         // 
@@ -192,14 +205,57 @@ type
         generate_pcu_read_visitor.UseVisualStyleBackColor := true;
         generate_pcu_read_visitor.Click += generate_pcu_read_visitor_Click;       
         
+            // 
+            // panel3
+            // 
+            panel3.BorderStyle := System.Windows.Forms.BorderStyle.FixedSingle;
+            panel3.Controls.Add(nodes_list);
+            panel3.Controls.Add(add);
+            panel3.Controls.Add(delete);
+            panel3.Location := new System.Drawing.Point(10, 9);
+            panel3.Name := 'panel3';
+            panel3.Size := new System.Drawing.Size(336, 406);
+            panel3.TabIndex := 12;        
+            
+            // 
+            // nodes_list
+            // 
+            nodes_list.ItemHeight := 16;
+            nodes_list.Location := new System.Drawing.Point(10, 9);
+            nodes_list.Name := 'nodes_list';
+            nodes_list.Size := new System.Drawing.Size(230, 372);
+            nodes_list.TabIndex := 3;
+            nodes_list.DoubleClick += nodes_list_DoubleClick;  
+            
+            // 
+            // add
+            // 
+            add.Location := new System.Drawing.Point(250, 18);
+            add.Name := 'add';
+            add.Size := new System.Drawing.Size(76, 27);
+            add.TabIndex := 6;
+            add.Text := 'Add';
+            add.Click += add_Click;            
+            
+            
+            // 
+            // delete
+            // 
+            delete.Location := new System.Drawing.Point(250, 55);
+            delete.Name := 'delete';
+            delete.Size := new System.Drawing.Size(76, 27);
+            delete.TabIndex := 7;
+            delete.Text := 'Delete';
+            delete.Click += delete_Click;            
         //
         // Form1
         //
         self.AutoScaleBaseSize := new System.Drawing.Size(6,15);
         self.ClientSize := new System.Drawing.Size(978, 421);
-        
-        self.Controls.Add(Panel2);
-        self.Controls.Add(Panel1);
+
+        self.Controls.Add(panel3);
+        self.Controls.Add(panel2);
+        self.Controls.Add(panel1);
         
         self.FormBorderStyle := System.Windows.Forms.FormBorderStyle.Fixed3D;
         self.MaximizeBox := false;
@@ -261,6 +317,27 @@ procedure Form1.generate_pcu_read_visitor_Click(sender: Object; e: EventArgs);
 begin
   
 end;
+
+procedure Form1.nodes_list_DoubleClick(sender: Object; e: EventArgs);
+begin
+{
+			int t=nodes_list.SelectedIndex;
+			if (t<0)
+				return;
+			node_def.show_modal((nodes_list.Items[t] as node_info),node_gen);
+			update();
+}  
+end;
+
+procedure Form1.add_Click(sender: Object; e: EventArgs);
+begin
+  
+end;
+procedure Form1.delete_Click(sender: Object; e: EventArgs);
+begin
+  
+end;
+
 
 procedure Form1.Form1_Load(sender: Object; e: EventArgs);
 begin
